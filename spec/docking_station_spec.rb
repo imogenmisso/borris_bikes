@@ -5,7 +5,7 @@ require 'bike'
 describe DockingStation do
   it { is_expected.to respond_to :release_bike }
 
-  it 'runs method to release bike' do
+  it 'release bikes working bikes' do
     subject.dock(Bike.new)
     bike = subject.release_bike
     expect(bike).to be_working
@@ -31,8 +31,10 @@ describe DockingStation do
   end
 
   it 'doesnt accept more than 20 bikes' do
-    subject.capacity.times {subject.dock(Bike.new)}
-    expect {subject.dock(Bike.new)}.to raise_error 'Full capacity'
+#    subject.capacity.times {subject.dock(Bike.new)}
+    subject.capacity.times {subject.dock double(:bike)}
+#    expect {subject.dock(Bike.new)}.to raise_error 'Full capacity'
+    expect {subject.dock double(:bike)}.to raise_error "Full capacity"
   end
 
   it 'has a default capacity, if no params to DockingStation' do
@@ -45,5 +47,12 @@ describe DockingStation do
     bike.report_broken
     station.dock(bike)
     expect {station.release_bike}.to raise_error "bike broken"
+  end
+
+  it 'accepts broken and working bikes' do
+    station = DockingStation.new
+    bike = Bike.new
+    bike.broken?
+    expect(station.dock(bike)).to eq [bike]
   end
 end

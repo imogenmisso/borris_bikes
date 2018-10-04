@@ -13,7 +13,7 @@ class DockingStation
   def release_bike
     fail "no bikes" if empty?
     @bikes.each do |bike|
-      fail "bike broken" unless bike.working?
+      fail "bike broken" if bike.broken?
     end
     @bikes.pop
   end
