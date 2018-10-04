@@ -1,5 +1,6 @@
 # testing the docking station
 require 'docking_station'
+require 'bike'
 
 describe DockingStation do
   it { is_expected.to respond_to :release_bike }
@@ -38,4 +39,11 @@ describe DockingStation do
     expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
   end
 
+  it 'does not release broken bikes' do
+    station = DockingStation.new
+    bike = Bike.new
+    bike.report_broken
+    station.dock(bike)
+    expect {station.release_bike}.to raise_error "bike broken"
+  end
 end

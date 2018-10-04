@@ -3,10 +3,11 @@ require 'bike'
 describe Bike do
   it { is_expected.to respond_to :working?}
 
-  it 'has a default status, if no params given' do
-    expect(subject.working?).to eq Bike::DEFAULT_STATUS
+  it {is_expected.to respond_to :report_broken}
+
+  it 'sends report when broken' do
+    bike = Bike.new
+    bike.report_broken
+    expect(bike.working?).to eq (false)
   end
-
-  it { is_expected.to respond_to :working_status=}
-
 end

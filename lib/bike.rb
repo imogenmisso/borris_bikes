@@ -1,15 +1,16 @@
 
 class Bike
 
-DEFAULT_STATUS = true
-attr_writer :working_status
-
-  def initialize(status = DEFAULT_STATUS)
-    @working_status = status
+  def initialize
+    @working = true
   end
 
   def working?
-    @working_status
+    @working
+  end
+
+  def report_broken
+    @working = false
   end
 
 end
