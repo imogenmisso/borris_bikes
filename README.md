@@ -2,4 +2,9 @@
 
 ### Introduction
 
-This program is designed to emulate all the docking stations bikes and infrastructure required to (repair staff and so on) required to make their dream a reality.
+Week 1 Makers Academy. Introduction into OOP, TDD, and pair programming. Goal was to build a functioning system for maintaining and managing Boris Bikes. 
+
+Here is the [spec](https://github.com/makersacademy/course/blob/master/boris_bikes/0_challenge_map.md).
+
+
+
